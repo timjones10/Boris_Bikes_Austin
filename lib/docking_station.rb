@@ -14,8 +14,9 @@ class DockingStation
   end
 
   def dock_bike(bike)
-    fail "Docking Station full" unless @bikes.nil?
-    @bikes = bike
+fail "Docking Station full" unless @bikes.count < 20
+    @bikes
+    # @bikes = bike
   end
 
 end

@@ -14,7 +14,7 @@ describe DockingStation do
     it 'returns docked bikes' do
       bike = Bike.new
       subject.dock_bike(bike)
-      expect(subject.bikes).to eq bike
+      expect(subject.bikes).to be_a Array
     end
 
   end
@@ -44,11 +44,12 @@ describe DockingStation do
     # end
 
     it 'docks something' do
-      expect(ds.dock_bike(bike)).to eq bike
+      expect(ds.dock_bike(bike)).to be_a Array
     end
-    
-    it 'it should fail to dock a bike if a bike is already docked' do
-      expect {ds.dock_bike(bike)}.to raise_error
+
+    it 'it should fail to dock a bike if the docking station\'s full' do
+      expect {@bikes.count > 20}.to raise_error
+
     end
   end
 
