@@ -29,26 +29,28 @@ describe DockingStation do
         ds = DockingStation.new
         expect { ds.release_bike }.to raise_error
       end
+
+      it 'fails if the dockingstation is empty?' do
+      ds = DockingStation.new
+      expect { ds.release_bike }.to raise_error
+    end
   end
 
-  describe "#dock_bike" do
-    ds = DockingStation.new
-    bike = Bike.new
 
+
+  describe "#dock_bike" do
     it "the dock_bike method should receive one argument" do
       expect(subject).to respond_to(:dock_bike).with(1).argument
     end
 
-    # it 'docks something' do
-    #   expect(ds.dock_bike(bike)).to eq bike
-    # end
-
     it 'docks something' do
-      expect(ds.dock_bike(bike)).to be_a Array
+        bike = Bike.new
+      expect(subject.dock_bike(bike)).to be_a Array
     end
 
-    it 'it should fail to dock a bike if the docking station\'s full' do
-      expect {@bikes.count > 20}.to raise_error
+    it ' raises an error when full' do
+      20.times {subject.dock_bike Bike.new }
+      expect {subject.dock_bike Bike.new }.to raise_error "Docking station full"
 
     end
   end

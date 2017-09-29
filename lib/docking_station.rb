@@ -4,7 +4,7 @@ require_relative "bike"
 class DockingStation
 
   attr_reader :bikes
-  def initialize()
+  def initialize
     @bikes = []
   end
 
@@ -14,8 +14,8 @@ class DockingStation
   end
 
   def dock_bike(bike)
-fail "Docking Station full" unless @bikes.count < 20
-    @bikes
+fail "Docking station full" if @bikes.count >= 20
+    @bikes << bike
     # @bikes = bike
   end
 
