@@ -1,5 +1,5 @@
-#require_relative "./bike"
-require "bike"
+require_relative "bike"
+
 
 class DockingStation
 
@@ -11,6 +11,7 @@ class DockingStation
   end
 
   def dock_bike(bike)
+    fail "Docking Station full" unless @bike.nil?
     @bike = bike
   end
 

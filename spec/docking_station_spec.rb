@@ -13,10 +13,6 @@ describe DockingStation do
       expect(subject.bike).to eq bike
     end
 
-    # it 'when bikes is called, @bikes is returned' do
-    #   bike = Bike.new
-    #   expect(subject.bikes).to eq bike
-    # end
   end
 
   describe "#release_bike" do
@@ -43,20 +39,9 @@ describe DockingStation do
       expect(ds.dock_bike(bike)).to eq bike
     end
 
-#    it "the dock_bike method should return the bikes array if successful" do
-#      expect(ds.dock_bike(bike)).to be_instance_of Array
-#    end
-
-#    it "the dock_bike method should have populated the bikes array" do
-#      expect(ds.bikes.count).to eq(1)
-#    end
+    it 'it should fail to dock a bike if a bike is already docked' do
+      expect {ds.dock_bike(bike)}.to raise_error
+    end
   end
-
-  # describe ".bikes" do
-  #   it "returns an array with all the docked bikes" do
-  #     expect(subject.bikes).to be_instance_of Array
-  #   end
-  # end
-
 
 end
