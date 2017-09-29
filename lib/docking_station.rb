@@ -14,9 +14,15 @@ class DockingStation
   end
 
   def dock_bike(bike)
-fail "Docking station full" if @bikes.count >= 20
+    fail "Docking station full" unless !full?
     @bikes << bike
     # @bikes = bike
+  end
+
+  private
+  
+  def full?
+    @bikes.count >= 20
   end
 
 end
