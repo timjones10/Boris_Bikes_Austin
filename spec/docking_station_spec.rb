@@ -25,18 +25,15 @@ describe DockingStation do
         expect(subject).to respond_to :release_bike
       end
 
-      it 'fails if there is no bike to be released' do
-        ds = DockingStation.new
-        expect { ds.release_bike }.to raise_error
-      end
+      # it 'fails if there is no bike to be released' do
+      #   expect {subject.release_bike }.to raise_error
+      # end
 
       it 'fails if the dockingstation is empty?' do
-      ds = DockingStation.new
-      expect { ds.release_bike }.to raise_error
+        20.times {subject.dock_bike Bike.new}
+        expect { 21.times {subject.release_bike} }.to raise_error 'Bike not available'
     end
   end
-
-
 
   describe "#dock_bike" do
     it "the dock_bike method should receive one argument" do
